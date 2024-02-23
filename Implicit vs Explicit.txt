@@ -1,0 +1,14 @@
+Implicit Wait 이란?
+
+글로벌로 적용된다
+
+WebDriver driver = ChromeDriver();
+driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+
+Explicit Wait이란?
+wait for more specific condition
+
+WebDriver driver = ChromeDriver();
+WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(ExpectedConditions.visibilityofElmentLocated(selecter));

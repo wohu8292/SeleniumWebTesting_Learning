@@ -1,0 +1,46 @@
+136.
+test 레벨에서의 testNG annotation
+
+클래스내에서 
+@AfterTest
+public void zero();
+
+@Test
+public void first();
+
+@BeforeTest					/테스트내에서 가장먼저 시작됨
+public void second();
+
+순서: second, first, zero
+
+-------------------------------------
+137.
+suit 레벨에서의 testNG annotation
+
+@AfterSuit				// xml 파일에서 실행된 모든 method 중 가장 마지막으로 실행됨
+@BeforeMethod(alwaysRun=true)		// 클래스 내에있는 모든 each method 이전에 실행될거임
+
+@BeforeMethod vs @BeforeTest 차이는?
+BeforeTest 는 XML레벨이고 BeforeMethod 는 Class 레벨임
+
+--------------------------------------
+138.
+@AfterClass	// 클래스의 맨 마지막에
+그리고 클래스내의 method 들은 alphabetic order 로 execute 됨
+
+*important
+각자 다른 클래스에서 method 들을 선택해서 실행하고 싶을경우
+@Test (Groups={"groupname"})
+
+<test name="">
+	<groups>
+		<run>
+			<include="groupname"/>
+		</run>
+	</groups>
+	<classes>
+		<class name="">
+	</classes>
+</test>
+
+결과: 그룹으로 묶인것만 실행됨

@@ -1,0 +1,34 @@
+139.
+
+testNG attribute 에는 어떤것들이 있을까
+
+@Test (dependsOnMethods={"methodNamethat this method is depending on","can depends on  multiple method"};
+
+@Test (enabled=false)	//Method 실행시키지 않고 skip 함 
+
+@Test (timeOut=4000)	//4초 지연
+
+
+140.
+
+parameterizing 
+
+in the XML 파일
+<suite name="">
+	<parameter name="URL" value="wohu.com"/>
+	<test name="">
+
+in the Class 파일
+@Parameters({"URL"})
+@Test
+public void methodname (string argument){}
+
+143.
+Listener Interface
+우선 자바클래스파일하나 만든다음에 implements ITestListener 설정
+
+그다음 XML 파일로 돌아와서
+<listeners>
+	<listener name="packagename.classname"/>
+</listeners>
+

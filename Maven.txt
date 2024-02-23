@@ -1,0 +1,44 @@
+1. Maven 다운로드받고 환경변수 설정
+
+-------------------------------------------------------------------------------
+
+2. Maven testing integration 검색해서 using suite XML파일 추가
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+      </plugin>
+
+-------------------------------------------------------------------------------
+
+3. dependencies 아래에다가 
+
+<profile>
+	<id>Regression</id>					/ cmd 에서 mvn test -PRegression 이렇게 실행시킴 
+	<build>
+    	<pluginManagement>
+      		<plugins>
+		 <plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-surefire-plugin</artifactId>
+        		<version>3.2.5</version>
+        		<configuration>
+          		<suiteXmlFiles>
+           		<suiteXmlFile>testSuites/testng.xml</suiteXmlFile>		/xml 파일의 경로설정
+         		</suiteXmlFiles>
+        		</configuration>
+      		</plugin>
+      		</plugins>
+      	</pluginManagement>
+      	</build>
+</profile>
+
+-------------------------------------------------------------------------------
+
+4. mvn test -PRegression -Dbrowser=Firefox

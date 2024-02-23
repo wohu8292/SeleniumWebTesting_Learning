@@ -1,0 +1,14 @@
+HTTPS 증에서
+1. http 란 html 을 전송하기위한 통신규약 
+2. s 란 보안
+
+https 는 ssl 의 한 종류
+ssl 이란 클라이언트와 서버간의 통신을 3자가 보증해주는 기술 (통신을 보증하기때문에 암호화가 중요함)	
+
+---------------------------------------------------------------
+
+테스트를 위해선 https certification 을 bypass 해야함
+
+ChromeOptions option = new ChromeOptions();
+option.setAcceptInsecureCerts(true);
+WebDriver driver = new ChromeDriver(option);

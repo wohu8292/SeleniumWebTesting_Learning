@@ -1,0 +1,107 @@
+mvn library 에서 Extent Reports aventstock 다운받음
+
+ExtentReports extent;
+
+/ static -> can access method without declaring object of class
+/ field are associated with class level
+
+public class Demo(){
+string path = system.getProperty("")+"\\reports\\index.html";
+ExtentSparkReporter reporter = new ExtentSparkReporter(path);
+reporter.config.setReportName("web automation");
+reporter.config.setDocumentTitle("Test Results");
+
+Eextent = new ExtentReports();
+extent.attachReporter(reporter);
+extent.setSystemInfo("Tester", "Rahul Shetty")
+}
+
+@Test
+public void initialDemo(){
+	ExtendTest test = extent.createTest(result.getMethod().getMethodNamd());
+	String path = 스크린샷 method 로 path 받아오기
+	test.addScreenCaptrueFromPath(path, result.getMethod().getMethodName());		//하고 try, catch 로 변환
+	extent.flush();
+}
+
+
+ITestListener 에 추가하면 좋음
+
+Extent 
+
+
+-------------------------------------------------------------------------------------------
+1. maven repository 에서 extent report aventstock 디팬던시
+
+2. extent report 클래스 만듦
+	public static ExtentReports getExtentReport() {			/ can access this method without declaring object
+		String path = System.getProperty("user.dir")+"/reports/index.html";	/ screenshot 과 같은경로
+		ExtentSparkReporter reporter = new ExtentSparkReporter(path);
+		reporter.config().setReportName("WebAutomationResult");
+		reporter.config().setDocumentTitle("Test Results");
+		
+		ExtentReports extent = new ExtentReports();
+		extent.attachReporter(reporter);
+		extent.setSystemInfo("Tester", "Rahul Shetty");
+		extent.createTest(path);
+		
+		return extent;
+	}
+
+3. implements ITestListener 만듦
+
+	ExtentTest test;
+	ExtentReports extent = ExtentReporterNG.getExtentReport();
+	ThreadLocal <ExtentTest>extentTest = new ThreadLocal();			//unique threadID 로 concurrency 해결!
+	
+	@Override
+	public void onTestStart(ITestResult result) {
+		test = extent.createTest(result.getMethod().getMethodName());	//테스트들 담기
+		extentTest.set(test);	//unique threadID
+	}
+
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		extentTest.get().log(Status.PASS, "TestPassed");
+	}
+
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+		// TODO Auto-generated method stub
+		extentTest.get().fail(result.getThrowable());
+		
+		// driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
+		try {
+			driver = (WebDriver) result.getTestClass().getRealClass().getField("driver")
+					.get(result.getInstance());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		// Screenshot, attachToReport
+		// String filePath = getScreenshot(result.getMethod().getMethodName());
+		// test.addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());
+		String filePath = null;
+		try {
+			filePath = getScreenshot(result.getMethod().getMethodName(), driver);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		extentTest.get().addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());
+	}
+
+
+	@Override
+	public void onFinish(ITestContext context) {
+		// TODO Auto-generated method stub
+		extent.flush();
+	}
+
+
+4. xml 파일 들어가서
+<listeners>
+	<listener class-name="testComponents.Listeners"></listener>
+</listeners>

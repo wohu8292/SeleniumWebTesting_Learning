@@ -1,0 +1,15 @@
+플러그인 설정하는법
+
+ChromeOptions option = new ChromeOptions();
+option.addExtensions("");
+WebDriver driver = new ChromeDriver(option);
+
+----------------------------------------------
+
+프록시 엑세스 설정하는법
+
+어떤 proxy 를 설정해야되는지는 네트워크담당자한테 물어봐야함
+ChromeOptions option = new ChromeOptions();
+Proxy prox = new Proxy();
+prox.setHttpProxy("");
+option.setCapability("proxy", prox);

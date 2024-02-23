@@ -1,0 +1,45 @@
+131.
+@Test
+public void methodname(){}
+
+모든 testNG 에서 모든 method 는 테스트케이스
+------------------------------------
+
+132.
+testNG xml 파일 실행시키는법
+자바프로젝트 생성후, 파일 좌클릭후, Convert to TestNG
+
+------------------------------------
+
+133.
+testNG xml 계층구조는
+
+<suite name="">
+	<test name="">
+		<classes>
+			<class name="">
+		</classes>
+	</test>
+</suite>
+
+--------------------------------------
+
+134.
+xml파일에
+<class name="">
+	<methods>
+		<exclude name=""/>
+	</methods>
+</class>
+
+---------------------------------------
+
+135.
+naming custom 에따라 공통된항목을 제거하거나 포함하고 싶을경우
+<methods>
+	<exclude name="API.*"/>              // .* means anything about API
+</methods>
+
+----------------------------------------
+
+

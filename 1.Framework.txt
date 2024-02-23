@@ -1,0 +1,22 @@
+main/java
+	AbstractComponent
+	pageObjects
+	Resources
+		propertiesfile
+
+
+test/java
+	Data
+		jsonfile
+	TestComonents
+		BaseTest
+		Listeners
+	Tests
+
+
+
+xml 파일들
+selenium java
+databind
+apache common io
+testng

@@ -1,0 +1,22 @@
+WebDriver driver
+
+Public ClassName(WebDriver driver){
+	super(driver)					// sending driver to parent
+	this.driver=driver;
+	PageFactory.initElement(driver, this)		// initialize all the elements
+}
+
+@FindBy (id="userEmail")
+WebElement userEmail
+
+By products = By.cssSelector(".mb-3");		//page facory is exclusively for driver.findElment construction
+-----------------------------------------
+
+
+
+public void waitForElementToAppear(By findBy){
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSecond(5))
+	wait.until(ExpectedConditions.visibilityOfElementLocated(findBy))
+}
+
+

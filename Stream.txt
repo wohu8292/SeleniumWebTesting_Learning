@@ -1,0 +1,82 @@
+Stream 이란  						/ assert 는 항상 test 파일에서
+
+---------------------------------------------------
+
+list<String> names = new ArrayList<String>();
+names.add("Adam");
+names.add("Bibi");
+names.add("Alex");
+
+names.stream().filter(s->s.startsWith("A")).count()		
+
+설명
+intermediate operation = filter		//terminal 없는 intermediat operation 은 무용지물
+final stream = Adam, Alex
+terminal operation = count		//필터된것중에서 카운트
+
+----------------------------------------------------
+
+Stream.of("Anna","Charlie","Aden").filter(s->{s.startWith("A");
+	
+}).count()
+
+결과는 2
+
+-----------------------------------------------------
+
+names.stream().filter(s->s.length()>4).forEach(s->System.out.println(s));
+names.stream().filter(s->s.startsWith("A")).limit(1).forEach(s->System.out.println(s));
+
+-----------------------------------------------------
+
+stream.of("Ana", "Johnson", "Sona").stream().Filter(s->s.endsWith("a"))
+.sorted().map(s->s.toUpperCase()).forEach(s->System.out.println(s))
+ 
+------------------------------------------------------
+
+두개의 ArrayList 병합하는법
+
+List<String> names1 = Array.asList("Alizabeth", "Tom");
+Stream<String> newstream = Stream.concat(names.stream(), names1.stream());
+
+값과 맞는지 꺼내는법
+Boolean flag = newstream.anyMatch(s->s.equalsIgnoreCase("Adam"));
+Assert.assertTrue(flag);
+--------------------------------------------------------
+
+리스트로 받는법
+List<String> ls = stream.of("ambi", "sora").filter(s->s.startsWith("a")).
+map(s->s.toUpperCase()).collect(collectors.toList());
+
+ls.get(0);
+
+stream.of("woong", "he", "she").filter(s->s.startsWith("w").map(s->s.toUpperCase()).collect(collectors.toList());
+
+-------------------------------------------------------------
+
+중복되지않고 값 뽑기
+
+List<Integer> values = Arrays.asList(1,3,3,5,7,9,7);
+values.stream().distinct().forEach(s->System.out.println(s));
+
+output: 1,3,5,7,9
+
+--------------------------------------------------------------
+
+리스트 선언하는법
+
+1. 어레이에서 리스트로 바꾸기
+List<Integer> values = Arrays.asList(1,3,5,6);
+
+2. 애초에 어레이리스트 선언해서 값추가
+List<Integer> values = new ArrayList<Integer>();
+value.add(1);
+value.add(3);
+
+3. 스트림에서만 가능한방법
+stream.of(1,3,5,6)
+
+--------------------------------------------------------------
+
+product.findElement(By.cssSelector("b")).getText().equals(productName)).findFirst().orElse(null);
+

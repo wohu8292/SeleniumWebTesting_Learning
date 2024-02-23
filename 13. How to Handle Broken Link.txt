@@ -1,0 +1,34 @@
+직접 링크를 눌러가면 테스트할수있지만 링크가 수천개일경우 자동화 시킴
+
+자동화 시키는법
+
+1. 일단 broken link 는 status code 가 400으로 시작함
+
+List <WebElement> links = driver.findElements(By.);
+
+for (WebElement link:links){
+	String url = link.getAttribute("href");
+	HttpURLConnection conn = (HttpURLConnection) new URL (url).openconnection();
+	conn.setRequestMethod("HEAD");
+	conn.connect();
+	int cod = conn.getResponseCode();
+
+	if(cod >= 400 ){
+		System.println("The link with text" + link.getText() + "is broken with a code" + cod)
+		Assert.asserTrue(False);
+	}
+}
+
+------------------------------------------------
+
+* 위에 사용되어진 assertion 에 관하여
+
+위에서는 hard assertion 이 사용되었는데 이경우 execution 이 바로 중지됨
+
+testNG 에는 soft assertion 이 있음
+
+SoftAssert a = new SoftAssert();
+a.Assert.assertTrue(cod<=400, "The link with text" + link.getText() + "is broken with a code" + cod)
+
+만약 assertion 이 false 일경우 오른쪽값이 출력된다.
+그리고 failure 저장되고 execution 이 멈추지않고 계속 진행된다.

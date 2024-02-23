@@ -1,0 +1,15 @@
+SelectorsHub 사용 또는
+콘솔에서 selector 찾을때는 $('')
+
+ID, Class, Name 등은 그냥 
+findElement(By.ID(""))
+
+CSS Selector
+1. class 는 button.classname 또는 .classname
+2. id 는 input#idname
+3. value 랑 같이찾을때는 input[placeholder='value']
+4. regular expression 은 input[placeholder*='va']
+-------------------------------------
+Xpath
+콘솔에서 xpath 찾을때는 $x('')
+1. //input[placeholder='value']

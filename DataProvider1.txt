@@ -1,0 +1,64 @@
+@DataProvider
+public object[][] getData(){			//[][] 이게 두개인 이유는 행,열 을따지는게아니라 2차원이라는거임
+	Object[][] data = new Object[3][2];	//3array, 2element
+	data[0][0]="freshman"
+	data[0][1]="password"
+
+	data[1][0]="secondfreshman"
+	data[1][1]="secondpassword"
+
+	data[2][0]="thirdfreshman"
+	data[2][1]="thirdpassword"
+
+	return data 
+}
+
+그리고
+
+@Test(dataProvider="getData")
+public void methodname (String username, String password){}
+
+--------------------------------------------------------------
+
+위와 다른방식으로 데이터를 전달하는법
+
+@DataProvider
+public Object[][] getData(){
+	HashMap<String, String> map = new HashMap<String, String>();			//String in Java is an Object
+	map.put("email","wohu8292@gmail.com")
+	map.put("password","1234")
+	map.put("major","computer")
+
+	HashMap<String, String> map2 = new HashMap<String, String>();			//String in Java is an Object
+	map.put("email","wohu8292@gmail.com")
+	map.put("password","1234")
+	map.put("major","music")
+
+	return new Object[][] {{map},{map2}}
+
+그리고
+
+@Test(dataProvider="getData")
+public void methodname (HashMap<String, String> input){
+	System.out.println(input.get("email"));
+	System.out.println(input.get("password"));
+}
+
+--------------------------------------------------------------
+
+JSON 파일로부터 데이터 받는법 (Jackson Databind 라는 라이브러리 필요)
+
+String jsonContent = FileUtils.readFileToString(new File("json_file_path"), StandardCharsets.UTF_8);
+ObjectMapper mapper = new ObjectMapper();	//이게 Jackson Databind 클래스임
+List<HashMap<String,String>> data = mapper.readValue(jsonContent, new TypeReference<List<HashMap<String,String>>>(){
+});
+
+return data
+
+그리고 테스트파일에서
+
+@DataProvider
+public Object[][] getData(){
+	List<HashMap<String,String>> data = method 받아옴
+	return new Object[][] {{data.get(0)},{data.get(1)}};
+}
