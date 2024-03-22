@@ -1,0 +1,13 @@
+**Dropdown
+
+Should be select tag
+
+WebElement dropdown = driver.findElementBy();
+Select select = new Select(dropdown);
+
+1. select.selectByValue(value)
+2. select.selectByVisibleText(text);
+3. select.selectByIndex(index);
+
+-------------------------------------------------------
+

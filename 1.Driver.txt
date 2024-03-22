@@ -1,0 +1,6 @@
+WebDriver -> Interface that providing method (selenium can't talk to browser directly)
+
+---------------------------------------------
+
+System.setProperty("webdriver.chrome.driver", "driver path");
+WebDriver driver = new ChromeDriver();
