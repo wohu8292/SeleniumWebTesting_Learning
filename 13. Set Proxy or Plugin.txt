@@ -1,4 +1,4 @@
-플러그인 설정하는법
+Set plugin
 
 ChromeOptions option = new ChromeOptions();
 option.addExtensions("");

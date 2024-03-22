@@ -9,14 +9,14 @@ if (name.contains(neededPorduct)){}
 2. Array 를 Array List 로 바꾸는 방법
 어레이는 어레이리스트에 비해 더적은 메모리를 소모하므로 복잡한 validation 에서만 어레이리스트를 사용할것
 
-어레이는 String[] itemNeeded = {"cucumber". "brocoli"};
-바꾸는 방법은       List needed = Arrays.asList(itemNeeded);   구글링 하면 나옴
+String[] itemNeeded = {"cucumber", "brocoli"};
+List needed = Arrays.asList(itemNeeded);
 
 
 -------------------------------------------
 
-3. 문자를 나눠서 원하는 부분만 얻는법
+3. split to get partially
 
 product="brocoli - 045";
 String[] name = product.split("-");
-String formattedName = name[0].trim();     트림은 띄어쓰기 지우기위해
+String formattedName = name[0].trim();

@@ -2,5 +2,14 @@ WebDriver -> Interface that providing method (selenium can't talk to browser dir
 
 ---------------------------------------------
 
-System.setProperty("webdriver.chrome.driver", "driver path");
+1. chorme
+System.setProperty("webdriver.chrome.driver", "chromedriver path");
 WebDriver driver = new ChromeDriver();
+
+2. firefox
+System.setProperty("webdriver.gecko.driver", "gaekoDriver path");
+WebDriver driver = new FirefoxDriver();
+
+3. MicrosoftEdge
+System.setProperty("webdriver.edge.driver", "edge.exe");
+WebDriver driver = new EdgeDriver();

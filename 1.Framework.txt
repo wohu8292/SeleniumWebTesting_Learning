@@ -1,5 +1,6 @@
 main/java
 	AbstractComponent
+		utility
 	pageObjects
 	Resources
 		propertiesfile
@@ -16,7 +17,7 @@ test/java
 
 
 xml 파일들
-selenium java
-databind
-apache common io
-testng
+1.selenium java
+2.databind
+3.apache common io
+4.testNG

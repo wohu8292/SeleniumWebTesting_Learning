@@ -1,9 +1,8 @@
-스크린샷 찍는법
+Taking Screenshot
 
-우선 WebDriver 를 automation 하는 behavior 에서 
-스크린샷찍는 behavior 로 바꾸어줘야함 (캐스팅or형변환 해주어야함)
+Casting Driver (Automation behavior -> Screenshot behavior)
 
 TakesScreenshot ts = (TakesScreenshot)driver;
-File source = ts.getScreenshotAs(OutputType.File);           //스크린샷 찍은다음 파일로 저장해라
+File source = ts.getScreenshotAs(OutputType.File);
 File file = new File(path)
 FileUtils.copyFile(source, file);
